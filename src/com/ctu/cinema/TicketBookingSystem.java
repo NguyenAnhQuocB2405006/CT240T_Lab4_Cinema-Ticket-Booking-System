@@ -97,7 +97,10 @@ public class TicketBookingSystem {
         }
 
         executor.shutdown();
-        executor.awaitTermination(10, TimeUnit.SECONDS);
+
+if (!executor.awaitTermination(1, TimeUnit.MINUTES)) {
+    executor.shutdownNow();
+}
 
         System.out.println("\n========= THỐNG KÊ TỔNG KẾT =========");
 
